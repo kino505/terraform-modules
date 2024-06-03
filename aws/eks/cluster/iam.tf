@@ -9,7 +9,9 @@ data "aws_iam_policy_document" "assume_role" {
 
     actions = ["sts:AssumeRole"]
   }
+}
 
+data "aws_iam_policy_document" "federated_policy" {
   statement {
     actions = ["sts:AssumeRoleWithWebIdentity"]
     effect  = "Allow"
@@ -52,4 +54,9 @@ resource "aws_iam_openid_connect_provider" "this" {
   client_id_list  = ["sts.amazonaws.com"]
   thumbprint_list = [data.tls_certificate.this.certificates[0].sha1_fingerprint]
   url             = data.tls_certificate.this.url
+}
+
+resource "aws_iam_role_policy_attachment" "federated_policy" {
+  policy_arn = data.aws_iam_policy_document.federated_policy.arn
+  role       = aws_iam_role.this.name
 }
