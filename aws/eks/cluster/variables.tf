@@ -43,5 +43,5 @@ locals {
     "encryption_config": {},
     "version": null
   }
-  eks = merge(local.default_eks,var.eks)
+  eks = module.deepmerge.merged
 }

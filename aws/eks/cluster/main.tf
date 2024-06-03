@@ -1,3 +1,11 @@
+module "deepmerge" {
+  source  = "git@github.com:kino505/terraform-modules.git//tools/deepmerge?ref=eks"
+  maps = [
+    local.default_eks,
+    var.eks
+  ]
+}
+
 resource "aws_eks_cluster" "this" {
   name     = local.cluster_name
   version  = local.eks.version
