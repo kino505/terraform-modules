@@ -13,10 +13,6 @@ variable application {
   type        = string
 }
 
-variable infrastructure {
-  description = "Infrastructure details"
-}
-
 variable eks {
   default = {}
   description = <<EOT
