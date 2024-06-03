@@ -10,7 +10,7 @@ export TF_CLI_ARGS_apply="-auto-approve"
 #env|grep TF_
 work_dir_prefix="/tmp/_work_"
 
-wd="${work_dir_prefix}/vpc"
+wd="${work_dir_prefix}/eks"
 if [ -d ${wd} ]; then
  rm -rf ${wd}
 fi
