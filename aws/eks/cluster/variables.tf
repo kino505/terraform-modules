@@ -13,6 +13,10 @@ variable application {
   type        = string
 }
 
+variable infrastructure {
+  description = "Infrastructure details"
+}
+
 variable eks {
   default = {}
   description = <<EOT
@@ -22,9 +26,9 @@ EOT
 }
 
 locals {
-  commonTags  = {}
-  full_name   = "${var.application}-${var.environment}"
-  cluster_name   = try(local.eks.full_name,local.full_name)
+  commonTags   = {}
+  full_name    = "${var.application}-${var.environment}"
+  cluster_name = try(local.eks.full_name,local.full_name)
 
   #https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eks_cluster
   default_eks = {
