@@ -23,8 +23,8 @@ resource "aws_eks_cluster" "this" {
   dynamic "access_config" {
     for_each = local.eks.access_config
     content {
-      authentication_mode                         = lookup(access_config.value,"authentication_mode",null)
-      bootstrap_cluster_creator_admin_permissions = lookup(access_config.value,"bootstrap_cluster_creator_admin_permissions",null)
+      authentication_mode                         = lookup(access_config,"authentication_mode",null)
+      bootstrap_cluster_creator_admin_permissions = lookup(access_config,"bootstrap_cluster_creator_admin_permissions",null)
     }
   }
 
