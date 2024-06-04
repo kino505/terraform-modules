@@ -21,7 +21,7 @@ resource "aws_eks_cluster" "this" {
   }
 
   dynamic "access_config" {
-    for_each = try(local.eks.access_config,{})
+    for_each = local.eks.access_config
     content {
       authentication_mode                         = access_config.value.authentication_mode
       bootstrap_cluster_creator_admin_permissions = access_config.value.bootstrap_cluster_creator_admin_permissions
@@ -29,7 +29,7 @@ resource "aws_eks_cluster" "this" {
   }
 
   dynamic "encryption_config" {
-    for_each = try(local.eks.encryption_config,{})
+    for_each = local.eks.encryption_config
     content {
       provider { 
         key_arn = encryption_config.value.key_arn
@@ -39,7 +39,7 @@ resource "aws_eks_cluster" "this" {
   }
 
   dynamic "kubernetes_network_config" {
-    for_each = try(local.eks.kubernetes_network_config,{})
+    for_each = local.eks.kubernetes_network_config
     content {
       service_ipv4_cidr = kubernetes_network_config.value.service_ipv4_cidr
       ip_family         = kubernetes_network_config.ip_family
