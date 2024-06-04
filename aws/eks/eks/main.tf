@@ -18,6 +18,12 @@ module "deepmerge" {
   source  = "git@github.com:kino505/terraform-modules.git//tools/deepmerge?ref=eks"
   maps = [
     var.eks,
-    {"eks.vpc_config.subnet_ids": module.vpc.private_subnet_ids}
+    {
+      "eks": {
+        "vpc_config": {
+          "subnet_ids": module.vpc.private_subnet_ids
+        }
+      }
+    }
   ]
 }
