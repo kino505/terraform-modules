@@ -37,7 +37,7 @@ locals {
       "security_group_ids": [],
       "subnet_ids": []
     },
-    "access_config": {}
+    "access_config": {},
     "encryption_config": {},
     "kubernetes_network_config": {},
     "encryption_config": {},
