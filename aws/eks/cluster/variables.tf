@@ -44,5 +44,4 @@ locals {
     "version": null
   }
   eks = module.deepmerge.merged
-  #eks = merge(local.default_eks,var.eks)
 }
