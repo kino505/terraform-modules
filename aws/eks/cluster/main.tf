@@ -39,10 +39,10 @@ resource "aws_eks_cluster" "this" {
   }
 
   dynamic "kubernetes_network_config" {
-    for_each = local.eks
+    for_each = local.eks.kubernetes_network_config
     content {
-      service_ipv4_cidr = kubernetes_network_config.value.service_ipv4_cidr
-      ip_family         = kubernetes_network_config.value.ip_family
+      service_ipv4_cidr = kubernetes_network_config.service_ipv4_cidr
+      ip_family         = kubernetes_network_config.ip_family
     }
   }
   # Ensure that IAM Role permissions are created before and deleted after EKS Cluster handling.
