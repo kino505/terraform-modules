@@ -19,10 +19,8 @@ module "deepmerge" {
   maps = [
     var.eks,
     {
-      "eks": {
-        "vpc_config": {
-          "subnet_ids": module.vpc.private_subnet_ids
-        }
+      "vpc_config": {
+        "subnet_ids": module.vpc.private_subnet_ids
       }
     }
   ]
