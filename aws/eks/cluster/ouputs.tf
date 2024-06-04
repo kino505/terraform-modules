@@ -9,3 +9,11 @@ output "kubeconfig-certificate-authority-data" {
 output "eks" {
   value = local.eks
 }
+
+output "default_eks" {
+  value = local.default_eks
+}
+
+output "access_config" {
+  value = local.eks.access_config
+}
