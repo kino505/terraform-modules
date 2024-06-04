@@ -33,7 +33,7 @@ locals {
     "vpc_config": {
       "endpoint_private_access": false,
       "endpoint_public_access": true,
-      "public_access_cidr": "0.0.0.0/0",
+      "public_access_cidr": ["0.0.0.0/0"],
       "security_group_ids": [],
       "subnet_ids": []
     },
@@ -43,5 +43,6 @@ locals {
     "encryption_config": {},
     "version": null
   }
-  eks = module.deepmerge.merged
+  #eks = module.deepmerge.merged
+  eks = merge(local.default_eks,var.eks)
 }
